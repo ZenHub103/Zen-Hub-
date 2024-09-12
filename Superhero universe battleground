@@ -9,4 +9,438 @@
 
 ]]--
 
-local v0=loadstring(game:HttpGet("https://raw.githubusercontent.com/AZYsGithub/DrRay-UI-Library/main/DrRay.lua"))();local v1=v0:Load("Zen Hub","Default");local v2=v0.newTab("Main","ImageIdHere");local v3=game:GetService("Players");local v4=game:GetService("ReplicatedStorage");local v5=false;local v6=v3.LocalPlayer;local v7=v6.Name;local function v8() local v60=0 + 0 ;while true do if (v60==(0 -0)) then v5=true;while v5 do local v218=1709 -(71 + 1638) ;while true do if (v218==(0 -0)) then for v258,v259 in ipairs(v3:GetPlayers()) do if v259.Character then local v273={[1]=v259.Character,[2]="Green Lantern",[1 + 2 ]="Shield",[18 -14 ]=CFrame.new( -(295.3583984375 + 561),216.3304443359375 + 108 ,181.2693099975586 -115 ) * CFrame.Angles( -2.818988800048828,0.5499429106712341 + 0 ,1132.9686298370361 -(87 + 1043) ) };v4.Events.Abilities:FireServer(unpack(v273));end end wait(5);break;end end end break;end end end local function v9() v5=false;end local function v10(v61) v61.Chatted:Connect(function(v142) if (v61.Name==v7) then if ((v142=="!Shield All") and  not v5) then v8();elseif ((v142=="!Unshield All") and v5) then v9();end end end);end local function v11() v3.PlayerAdded:Connect(v10);for v143,v144 in ipairs(v3:GetPlayers()) do v10(v144);end end v2.newButton("Get !Shield All Or !Unshield All Cmds","Shield All Players",function() v11();print("Chat commands for !Shield All and !Unshield All enabled!");end);local v12=game:GetService("Players");local v13=game:GetService("ReplicatedStorage");local v14=v12.LocalPlayer;local v15=false;local v16=workspace:WaitForChild("Spawn_Map"):WaitForChild("Baseplate");local v17=workspace:WaitForChild("Spawn_Map"):WaitForChild("SpawnLocation");local v18=v16.Size;local v19=v16.Position;local v20=v17.Size;local v21=v17.Position;local function v22(v62) if (v62.Character and v62.Character:FindFirstChild("HumanoidRootPart")) then local v155=448 -(10 + 438) ;local v156;local v157;local v158;local v159;while true do if (v155==(1 + 0)) then v158=math.abs(v156.Z-v19.Z )<=(v18.Z/(7 -5)) ;v159=(v156.Y>=v19.Y) and (v156.Y<=(v19.Y + v18.Y)) ;v155=2;end if (v155==(0 + 0)) then v156=v62.Character.HumanoidRootPart.Position;v157=math.abs(v156.X-v19.X )<=(v18.X/(1182 -(1123 + 57))) ;v155=1 + 0 ;end if (v155==(256 -(163 + 91))) then return v157 and v158 and v159 ;end end end return false;end local function v23(v63) local v64=1930 -(1869 + 61) ;while true do if (v64==0) then if (v63.Character and v63.Character:FindFirstChild("HumanoidRootPart")) then local v237=0 + 0 ;local v238;local v239;local v240;local v241;while true do if (v237==0) then v238=v63.Character.HumanoidRootPart.Position;v239=math.abs(v238.X-v21.X )<=(v20.X/(6 -4)) ;v237=1;end if (v237==(1 -0)) then v240=math.abs(v238.Z-v21.Z )<=(v20.Z/(1 + 1)) ;v241=(v238.Y>=v21.Y) and (v238.Y<=(v21.Y + v20.Y)) ;v237=2 -0 ;end if (v237==2) then return v239 and v240 and v241 ;end end end return false;end end end local function v24() local v65=nil;local v66=math.huge;for v145,v146 in ipairs(v12:GetPlayers()) do if ((v146~=v14) and v146.Character and v146.Character:FindFirstChild("HumanoidRootPart") and v146.Character:FindFirstChild("Humanoid")) then if ((v146.Character.Humanoid.Health>(0 + 0)) and  not v22(v146) and  not v23(v146)) then local v242=0;local v243;while true do if (v242==(1474 -(1329 + 145))) then v243=(v14.Character.HumanoidRootPart.Position-v146.Character.HumanoidRootPart.Position).magnitude;if (v243<v66) then v66=v243;v65=v146;end break;end end end end end return v65;end local function v25() local v67=v24();if (v67 and v67.Character and v67.Character:FindFirstChild("HumanoidRootPart")) then v14.Character.HumanoidRootPart.CFrame=v67.Character.HumanoidRootPart.CFrame;if v23(v67) then local v219=971 -(140 + 831) ;while true do if (v219==(1850 -(1409 + 441))) then print("Player in SpawnLocation detected. Stopping auto teleport.");stopAutoFarm();break;end end end end end local function v26() local v68=v14.Character;if  not v68 then return;end local v69={[719 -(15 + 703) ]=v68,[1 + 1 ]="Black Panther",[441 -(262 + 176) ]="Slashes",[1725 -(345 + 1376) ]=CFrame.new( -(1517.8492431640625 -(198 + 490)),1431.3304443359375 -1107 ,582.4457702636719 -339 ) * CFrame.Angles( -(1208.678513765335 -(696 + 510)), -(0.09100722521543503 -0), -3.096247434616089) };local v70=v13:FindFirstChild("Events") and v13.Events:FindFirstChild("Abilities") ;if v70 then v70:FireServer(unpack(v69));else warn("Abilities event not found!");end end local function v27() v15=true;spawn(function() while v15 do local v162=0;while true do if (v162==0) then v25();wait(1262.5 -(1091 + 171) );break;end end end end);spawn(function() while v15 do local v163=0;while true do if ((0 + 0)==v163) then v26();wait(1);break;end end end end);end local function v28() v15=false;end v2.newToggle("Auto Farm","Toggle to start auto farming!",true,function(v71) if v71 then local v164=0 -0 ;while true do if (v164==(0 -0)) then print("Auto Farm On");v27();break;end end else print("Auto Farm Off");v28();end end);local v29;local v30=false;local v31=1983.34 -(123 + 251) ;v2.newToggle("Spam thor hammer","With Aimbot",true,function(v72) local v73=0 -0 ;local v74;local v75;local v76;local v77;while true do if (0==v73) then v74=game:GetService("Players").LocalPlayer;v75=game:GetService("Players");v73=699 -(208 + 490) ;end if ((1 + 1)==v73) then function v77(v220) local v221=0 + 0 ;local v222;local v223;while true do if (v221==(837 -(660 + 176))) then for v262,v263 in pairs(v75:GetPlayers()) do if ((v263~=v74) and v263.Character and v263.Character:FindFirstChild("HumanoidRootPart")) then local v274=0 + 0 ;local v275;while true do if (v274==0) then v275=(v263.Character.HumanoidRootPart.Position-v74.Character.HumanoidRootPart.Position).Magnitude;if (v275<v222) then local v289=0;while true do if (v289==(202 -(14 + 188))) then v222=v275;v223=v263;break;end end end break;end end end end return v223,v222;end if (v221==0) then v222=v220;v223=nil;v221=676 -(534 + 141) ;end end end if (v72 and  not v30) then v30=true;v29=v76.Heartbeat:Connect(function() local v250=0;local v251;local v252;while true do if (v250==0) then v251,v252=v77(v31);if (v251 and (v252<=v31)) then local v277=0 + 0 ;local v278;while true do if (v277==(0 + 0)) then v278={[1 + 0 ]=v74.Character,[2]="Thor",[3]="Throw",[8 -4 ]=v251.Character.HumanoidRootPart.CFrame};game:GetService("ReplicatedStorage").Events.Abilities:FireServer(unpack(v278));break;end end end break;end end end);elseif ( not v72 and v30) then v30=false;if v29 then v29:Disconnect();v29=nil;end end break;end if (v73==(1 -0)) then v76=game:GetService("RunService");v77=nil;v73=2;end end end);local v3=game:GetService("Players");local v4=game:GetService("ReplicatedStorage");local v6=v3.LocalPlayer;local function v32() local v78=nil;local v79=math.huge;for v147,v148 in pairs(v3:GetPlayers()) do if ((v148~=v6) and v148.Character and v148.Character:FindFirstChild("HumanoidRootPart")) then local v180=(v148.Character.HumanoidRootPart.Position-v6.Character.HumanoidRootPart.Position).magnitude;if (v180<v79) then v79=v180;v78=v148;end end end return v78;end local v33=false;v2.newToggle("Spam Spiderman Web","With Aimbot",true,function(v80) local v81=0 -0 ;while true do if (v81==(0 + 0)) then v33=v80;if v80 then spawn(function() while v33 do local v255=v32();if v255 then local v267=0;local v268;local v269;local v270;while true do if (v267==1) then v270={[1 + 0 ]=v6.Character,[398 -(115 + 281) ]="Spiderman",[6 -3 ]="Web Shot",[4]=v269};v4.Events.Abilities:FireServer(unpack(v270));break;end if (v267==(0 + 0)) then v268=v255.Character.HumanoidRootPart.Position;v269=CFrame.new(v268);v267=1;end end end wait(0.1 -0 );end end);end break;end end end);local function v34(v82,v83) if (v82 and v82.Character and v82.Character:FindFirstChild("HumanoidRootPart")) then local v165=0 -0 ;local v166;local v167;local v168;local v169;local v170;while true do if (v165==(868 -(550 + 317))) then v168=(v166-v6.Character.HumanoidRootPart.Position).magnitude;v169=v168/v83 ;v165=2;end if (v165==0) then v166=v82.Character.HumanoidRootPart.Position;v167=v82.Character.HumanoidRootPart.Velocity;v165=1;end if (v165==(2 -0)) then v170=v166 + (v167 * v169) ;return CFrame.new(v170);end end end return nil;end v2.newToggle("Spam Iron Man Skill","With Aimbot",true,function(v84) v33=v84;if v84 then spawn(function() local v181=0;local v182;while true do if (v181==(0 -0)) then v182=50;while v33 do local v256=v32();if v256 then local v271=v34(v256,v182);if v271 then local v279=0 -0 ;local v280;while true do if (v279==0) then v280={[286 -(134 + 151) ]=v6.Character,[1667 -(970 + 695) ]="Iron Man",[5 -2 ]="Repulsor",[1994 -(582 + 1408) ]=v271};v4.Events.Abilities:FireServer(unpack(v280));break;end end end end wait(0.1 -0 );end break;end end end);end end);v2.newButton("Heal","Heal Yourself",function() local v85=0 -0 ;local v86;while true do if (v85==(0 -0)) then v86={[1]=game:GetService("Players").LocalPlayer.Character,[1826 -(1195 + 629) ]="Hulk",[3]="Heal",[4]=CFrame.new( -870.015,324.446,57.05) * CFrame.Angles( -(2.51247 -0),0.669894,243.71718 -(187 + 54) ) };game:GetService("ReplicatedStorage").Events.Abilities:FireServer(unpack(v86));break;end end end);local v35=v6.Character;local v36=v35 and v35:FindFirstChildOfClass("Humanoid") ;local function v37() local v87=780 -(162 + 618) ;local v88;while true do if ((0 + 0)==v87) then v88={[1 + 0 ]=v6.Character,[2]="Hulk",[6 -3 ]="Heal",[4]=CFrame.new( -(1462.0149999999999 -592),324.446,5.049999999999997 + 52 ) * CFrame.Angles( -(1638.51247 -(1373 + 263)),1000.669894 -(451 + 549) ,2.71718) };v4.Events.Abilities:FireServer(unpack(v88));break;end end end local v38=false;local v39;local function v40() if v36 then v39=v36.HealthChanged:Connect(function() if (v36.Health<v36.MaxHealth) then v37();end end);end end local function v41() if v39 then v39:Disconnect();v39=nil;end end v2.newToggle("Auto Heal","Auto Heal When Take Damage",true,function(v89) local v90=0 + 0 ;while true do if ((0 -0)==v90) then v38=v89;if v89 then v40();else v41();end break;end end end);local v42=false;local v43=false;local function v44() local v91=0 -0 ;while true do if (v91==0) then v43=true;while v43 do local v224=1384 -(746 + 638) ;local v225;while true do if (v224==(1 + 0)) then wait(7 -2 );break;end if (v224==0) then v225={[342 -(218 + 123) ]=game:GetService("Players").LocalPlayer.Character,[1583 -(1535 + 46) ]="Green Lantern",[3]="Shield",[4 + 0 ]=CFrame.new( -826.959,47.329999999999984 + 277 ,854.429 -(306 + 254) ) * CFrame.Angles( -(1.9538799999999998 + 1),0.017579,5.13825 -2 ) };game:GetService("ReplicatedStorage").Events.Abilities:FireServer(unpack(v225));v224=1468 -(899 + 568) ;end end end break;end end end v2.newToggle("Inf Shield","Shield",true,function(v92) if v92 then if  not v43 then v44();end else v43=false;end end);local function v45(v93) if ((v93.Name~="iam_kogi") or  not v93.Character or  not v93.Character:FindFirstChild("HumanoidRootPart")) then return;end local v94=v93.Character:FindFirstChild("ESP");if v94 then v94:Destroy();end local v95=Instance.new("BillboardGui");v95.Name="ESP";v95.AlwaysOnTop=true;v95.Size=UDim2.new(0,100,0 + 0 ,96 -56 );v95.StudsOffset=Vector3.new(603 -(268 + 335) ,292 -(60 + 230) ,572 -(426 + 146) );v95.Adornee=v93.Character.HumanoidRootPart;local v102=Instance.new("TextLabel",v95);v102.Size=UDim2.new(1,0 + 0 ,1457 -(282 + 1174) ,811 -(569 + 242) );v102.BackgroundTransparency=2 -1 ;v102.TextColor3=Color3.new(1,0,0);v102.TextStrokeTransparency=0 + 0 ;v102.TextScaled=true;v102.Text="Owner";v95.Parent=v93.Character.HumanoidRootPart;spawn(function() while v93.Character and v93.Character:FindFirstChild("HumanoidRootPart")  do local v171=1024 -(706 + 318) ;while true do if (v171==0) then v95.Adornee=v93.Character.HumanoidRootPart;wait(0.1);break;end end end end);end game:GetService("Players").PlayerAdded:Connect(function(v110) if (v110.Name=="iam_kogi") then v110.CharacterAdded:Connect(function() v45(v110);end);end end);for v111,v112 in pairs(game:GetService("Players"):GetPlayers()) do if (v112.Name=="iam_kogi") then v45(v112);end end local v46=false;local v47=nil;local v48=nil;local v49=nil;local function v34(v113) local v114=v113.Character;if ( not v114 or  not v114:FindFirstChild("HumanoidRootPart")) then return nil;end local v115=v114:FindFirstChild("HumanoidRootPart");local v116=v115.Position;local v117=v115.Velocity;local v118=1251.2 -(721 + 530) ;local v119=v116 + (v117 * v118) ;return v119;end local function v32() local v120=game:GetService("Players").LocalPlayer;local v121=game:GetService("Players"):GetPlayers();local v122=nil;local v123=math.huge;for v149,v150 in pairs(v121) do if ((v150~=v120) and v150.Character and v150.Character:FindFirstChild("HumanoidRootPart")) then local v183=1271 -(945 + 326) ;local v184;while true do if (v183==0) then v184=v150.Character:FindFirstChild("Humanoid");if (v184 and (v184.Health>(0 -0))) then local v264=(v120.Character.HumanoidRootPart.Position-v150.Character.HumanoidRootPart.Position).Magnitude;if (v264<v123) then local v276=0 + 0 ;while true do if (v276==(700 -(271 + 429))) then v123=v264;v122=v150;break;end end end end break;end end end end return v122;end local function v45(v124) local v125=0 + 0 ;local v126;local v127;local v128;local v129;local v130;local v131;local v132;while true do if (v125==(1505 -(1408 + 92))) then v132.TextColor3=Color3.fromRGB(255,1086 -(461 + 625) ,0);v132.Size=UDim2.new(1289 -(993 + 295) ,0 + 0 ,1172 -(418 + 753) ,0 + 0 );v132.BackgroundTransparency=1 + 0 ;v132.TextScaled=true;v132.TextStrokeTransparency=0.5 + 0 ;v132.Parent=v131;v125=2 + 4 ;end if (v125==4) then v131.Size=UDim2.new(529 -(406 + 123) ,1869 -(1749 + 20) ,0 + 0 ,1372 -(1249 + 73) );v131.StudsOffset=Vector3.new(0 + 0 ,1148 -(466 + 679) ,0);v131.AlwaysOnTop=true;v131.Parent=game.CoreGui;v132=Instance.new("TextLabel");v132.Text="[TARGET]";v125=5;end if (v125==(6 -3)) then v130.Thickness=0.2 -0 ;v130.Length=(v127.Position-game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude;v130.CFrame=CFrame.new(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position,v127.Position);v130.Parent=game.CoreGui;v131=Instance.new("BillboardGui");v131.Adornee=v127;v125=1904 -(106 + 1794) ;end if (v125==2) then v129.BackgroundColor3=Color3.fromRGB(81 + 174 ,0 + 0 ,0 -0 );v129.BackgroundTransparency=0.5;v129.Parent=v128;v130=Instance.new("LineHandleAdornment");v130.Adornee=v127;v130.Color3=Color3.fromRGB(255,0,0);v125=7 -4 ;end if (v125==(120 -(4 + 110))) then return v128,v130,v131;end if (v125==0) then v126=v124.Character;if ( not v126 or  not v126:FindFirstChild("HumanoidRootPart")) then return;end v127=v126:FindFirstChild("HumanoidRootPart");if  not v127 then return;end v128=Instance.new("BillboardGui");v128.Adornee=v127;v125=585 -(57 + 527) ;end if (v125==(1428 -(41 + 1386))) then v128.Size=UDim2.new(103 -(17 + 86) ,34 + 16 ,0,50);v128.StudsOffset=Vector3.new(0 -0 ,2,0 -0 );v128.AlwaysOnTop=true;v128.Parent=game.CoreGui;v129=Instance.new("Frame");v129.Size=UDim2.new(167 -(122 + 44) ,0,1 -0 ,0 -0 );v125=2 + 0 ;end end end local function v50() if v47 then local v172=0 + 0 ;while true do if (v172==(0 -0)) then v47:Destroy();v47=nil;break;end end end if v48 then local v173=65 -(30 + 35) ;while true do if (v173==(0 + 0)) then v48:Destroy();v48=nil;break;end end end if v49 then v49:Destroy();v49=nil;end end local function v51() while v46 do local v151=1257 -(1043 + 214) ;local v152;while true do if (v151==(3 -2)) then wait(1212.1 -(323 + 889) );break;end if (v151==(0 -0)) then v152=v32();if v152 then local v253=580 -(361 + 219) ;local v254;while true do if ((320 -(53 + 267))==v253) then v254=v34(v152);if v254 then local v281=0 + 0 ;local v282;local v283;while true do if (v281==(415 -(15 + 398))) then v47,v48,v49=v45(v152);break;end if (v281==(983 -(18 + 964))) then game:GetService("ReplicatedStorage").Events.Abilities:FireServer(unpack(v283));v50();v281=7 -5 ;end if (0==v281) then v282=game:GetService("Players").LocalPlayer;v283={[1 + 0 ]=v282.Character,[2 + 0 ]="Flash",[853 -(20 + 830) ]="Blast",[4 + 0 ]=CFrame.new(v254)};v281=127 -(116 + 10) ;end end end break;end end else v50();end v151=1 + 0 ;end end end end v2.newToggle("Sha Zam Spam Skill","With aimbot",true,function(v133) if v133 then v46=true;print("Aimbot On");v51();else local v174=738 -(542 + 196) ;while true do if (v174==(1 -0)) then v50();break;end if (v174==(0 + 0)) then v46=false;print("Aimbot Off");v174=1 + 0 ;end end end end);local v12=game:GetService("Players");local v13=game:GetService("ReplicatedStorage");local v6=v12.LocalPlayer;local function v52() for v153,v154 in pairs(v12:GetPlayers()) do if (v154~=v6) then local v217={[1]=v154.Character,[1 + 1 ]="Thanos",[7 -4 ]="Meteor",[9 -5 ]=CFrame.new( -614.859130859375,1879.8002624511719 -(1126 + 425) ,755.0609436035156 -(118 + 287) ) * CFrame.Angles(0,0,0 -0 ) };v13.Events.Abilities:FireServer(unpack(v217));end end end _G.looping=false;v2.newButton("Get Meteorite cmds [TAP ME]","Type !Meteorite or !Unmeteorite",function() local v134=0;while true do if (v134==(1121 -(118 + 1003))) then print("Hello!");v6.Chatted:Connect(function(v226) if (v226=="!Meteorite") then if  not _G.looping then local v265=0 -0 ;while true do if (v265==(377 -(142 + 235))) then _G.looping=true;spawn(function() while _G.looping do v52();wait(4 -3 );end end);break;end end end elseif (v226=="!Unmeteorite") then local v266=0;while true do if (v266==0) then _G.looping=false;print("Meteorite event stopped");break;end end end end);break;end end end);local v3=game:GetService("Players");local v53=game:GetService("ReplicatedStorage").Events.Abilities;local v54=nil;local v55=false;local function v56(v135) local v136=0 + 0 ;while true do if (0==v136) then for v227,v228 in pairs(v3:GetPlayers()) do if v228.Name:lower():find(v135:lower()) then return v228;end end return nil;end end end local function v57(v137) if v137:find("!Remove") then local v175=v137:match("!Remove%s*(%S+)");if (v54 and v54.Name:lower():find(v175:lower())) then local v229=977 -(553 + 424) ;while true do if (v229==0) then v55=false;print("Stopped action for player: "   .. v54.Name );v229=1;end if ((1 -0)==v229) then v54=nil;break;end end else print("Player not found or not the correct player.");end else local v176=0;while true do if ((0 + 0)==v176) then if v54 then v55=false;end print("Entered text: "   .. v137 );v176=1;end if (v176==(1 + 0)) then v54=v56(v137);if (v54 and v54.Character) then local v257=0 + 0 ;while true do if (v257==(0 + 0)) then v55=true;print("Started action for player: "   .. v54.Name );v257=1 + 0 ;end if (v257==1) then while v55 do local v284=0;local v285;while true do if (v284==0) then v285={[2 -1 ]=v54.Character,[5 -3 ]="Dr Fate",[6 -3 ]="Grab",[4]=CFrame.new( -(175.93585205078125 + 424),1565.4458618164062 -1241 ,1017.930419921875 -(239 + 514) ) * CFrame.Angles("-0",0 + 0 ,"-0") };v53:FireServer(unpack(v285));v284=1330 -(797 + 532) ;end if (1==v284) then wait(1);break;end end end break;end end else print("Player not found or has no character.");end break;end end end end local v12=game:GetService("Players");local v13=game:GetService("ReplicatedStorage");local v6=v12.LocalPlayer;local v5=false;local v58=nil;local function v56(v138) local v139=0;while true do if (v139==0) then for v230,v231 in ipairs(v12:GetPlayers()) do if string.find(v231.Name:l
+local v0 = loadstring(game:HttpGet("https://raw.githubusercontent.com/AZYsGithub/DrRay-UI-Library/main/DrRay.lua"))();
+local v1 = v0:Load("Zen Hub", "Default");
+local v2 = v0.newTab("Main", "ImageIdHere");
+local v3;
+local v4 = false;
+local v5 = 1609.34;
+v2.newToggle("Spam thor hammer", "With Aimbot", true, function(v40)
+	local v41 = game:GetService("Players").LocalPlayer;
+	local v42 = game:GetService("Players");
+	local v43 = game:GetService("RunService");
+	local function v44(v128)
+		local v129 = v128;
+		local v130 = nil;
+		for v144, v145 in pairs(v42:GetPlayers()) do
+			if ((v145 ~= v41) and v145.Character and v145.Character:FindFirstChild("HumanoidRootPart")) then
+				local v163 = (v145.Character.HumanoidRootPart.Position - v41.Character.HumanoidRootPart.Position).Magnitude;
+				if (v163 < v129) then
+					v129 = v163;
+					v130 = v145;
+				end
+			end
+		end
+		return v130, v129;
+	end
+	if (v40 and not v4) then
+		v4 = true;
+		v3 = v43.Heartbeat:Connect(function()
+			local v156, v157 = v44(v5);
+			if (v156 and (v157 <= v5)) then
+				local v169 = {[1]=v41.Character,[2]="Thor",[3]="Throw",[4]=v156.Character.HumanoidRootPart.CFrame};
+				game:GetService("ReplicatedStorage").Events.Abilities:FireServer(unpack(v169));
+			end
+		end);
+	elseif (not v40 and v4) then
+		v4 = false;
+		if v3 then
+			v3:Disconnect();
+			v3 = nil;
+		end
+	end
+end);
+local v6 = game:GetService("Players");
+local v7 = game:GetService("ReplicatedStorage");
+local v8 = v6.LocalPlayer;
+local function v9()
+	local v45 = nil;
+	local v46 = math.huge;
+	for v131, v132 in pairs(v6:GetPlayers()) do
+		if ((v132 ~= v8) and v132.Character and v132.Character:FindFirstChild("HumanoidRootPart")) then
+			local v158 = (v132.Character.HumanoidRootPart.Position - v8.Character.HumanoidRootPart.Position).magnitude;
+			if (v158 < v46) then
+				v46 = v158;
+				v45 = v132;
+			end
+		end
+	end
+	return v45;
+end
+local v10 = false;
+v2.newToggle("Spam Spiderman Web", "With Aimbot", true, function(v47)
+	v10 = v47;
+	if v47 then
+		spawn(function()
+			while v10 do
+				local v164 = v9();
+				if v164 then
+					local v175 = v164.Character.HumanoidRootPart.Position;
+					local v176 = CFrame.new(v175);
+					local v177 = {[1]=v8.Character,[2]="Spiderman",[3]="Web Shot",[4]=v176};
+					v7.Events.Abilities:FireServer(unpack(v177));
+				end
+				wait(0.1);
+			end
+		end);
+	end
+end);
+local function v11(v48, v49)
+	if (v48 and v48.Character and v48.Character:FindFirstChild("HumanoidRootPart")) then
+		local v146 = v48.Character.HumanoidRootPart.Position;
+		local v147 = v48.Character.HumanoidRootPart.Velocity;
+		local v148 = (v146 - v8.Character.HumanoidRootPart.Position).magnitude;
+		local v149 = v148 / v49;
+		local v150 = v146 + (v147 * v149);
+		return CFrame.new(v150);
+	end
+	return nil;
+end
+v2.newToggle("Spam Iron Man Skill", "With Aimbot", true, function(v50)
+	v10 = v50;
+	if v50 then
+		spawn(function()
+			local v159 = 50;
+			while v10 do
+				local v165 = v9();
+				if v165 then
+					local v178 = v11(v165, v159);
+					if v178 then
+						local v179 = {[1]=v8.Character,[2]="Iron Man",[3]="Repulsor",[4]=v178};
+						v7.Events.Abilities:FireServer(unpack(v179));
+					end
+				end
+				wait(0.1);
+			end
+		end);
+	end
+end);
+v2.newButton("Heal", "Heal Yourself", function()
+	local v51 = {[1]=game:GetService("Players").LocalPlayer.Character,[2]="Hulk",[3]="Heal",[4]=(CFrame.new(-870.015, 324.446, 57.05) * CFrame.Angles(-2.51247, 0.669894, 2.71718))};
+	game:GetService("ReplicatedStorage").Events.Abilities:FireServer(unpack(v51));
+end);
+local v12 = v8.Character;
+local v13 = v12 and v12:FindFirstChildOfClass("Humanoid");
+local function v14()
+	local v52 = {[1]=v8.Character,[2]="Hulk",[3]="Heal",[4]=(CFrame.new(-870.015, 324.446, 57.05) * CFrame.Angles(-2.51247, 0.669894, 2.71718))};
+	v7.Events.Abilities:FireServer(unpack(v52));
+end
+local v15 = false;
+local v16;
+local function v17()
+	if v13 then
+		v16 = v13.HealthChanged:Connect(function()
+			if (v13.Health < v13.MaxHealth) then
+				v14();
+			end
+		end);
+	end
+end
+local function v18()
+	if v16 then
+		v16:Disconnect();
+		v16 = nil;
+	end
+end
+v2.newToggle("Auto Heal", "Auto Heal When Take Damage", true, function(v53)
+	v15 = v53;
+	if v53 then
+		v17();
+	else
+		v18();
+	end
+end);
+local v19 = false;
+local v20 = false;
+local function v21()
+	v20 = true;
+	while v20 do
+		local v133 = {[1]=game:GetService("Players").LocalPlayer.Character,[2]="Green Lantern",[3]="Shield",[4]=(CFrame.new(-826.959, 324.33, 294.429) * CFrame.Angles(-2.95388, 0.017579, 3.13825))};
+		game:GetService("ReplicatedStorage").Events.Abilities:FireServer(unpack(v133));
+		wait(5);
+	end
+end
+v2.newToggle("Inf Shield", "Shield", true, function(v54)
+	if v54 then
+		if not v20 then
+			v21();
+		end
+	else
+		v20 = false;
+	end
+end);
+local function v22(v55)
+	if ((v55.Name ~= "iam_kogi") or not v55.Character or not v55.Character:FindFirstChild("HumanoidRootPart")) then
+		return;
+	end
+	local v56 = v55.Character:FindFirstChild("ESP");
+	if v56 then
+		v56:Destroy();
+	end
+	local v57 = Instance.new("BillboardGui");
+	v57.Name = "ESP";
+	v57.AlwaysOnTop = true;
+	v57.Size = UDim2.new(0, 100, 0, 40);
+	v57.StudsOffset = Vector3.new(0, 2, 0);
+	v57.Adornee = v55.Character.HumanoidRootPart;
+	local v64 = Instance.new("TextLabel", v57);
+	v64.Size = UDim2.new(1, 0, 1, 0);
+	v64.BackgroundTransparency = 1;
+	v64.TextColor3 = Color3.new(1, 0, 0);
+	v64.TextStrokeTransparency = 0;
+	v64.TextScaled = true;
+	v64.Text = "Owner";
+	v57.Parent = v55.Character.HumanoidRootPart;
+	spawn(function()
+		while v55.Character and v55.Character:FindFirstChild("HumanoidRootPart") do
+			v57.Adornee = v55.Character.HumanoidRootPart;
+			wait(0.1);
+		end
+	end);
+end
+game:GetService("Players").PlayerAdded:Connect(function(v72)
+	if (v72.Name == "iam_kogi") then
+		v72.CharacterAdded:Connect(function()
+			v22(v72);
+		end);
+	end
+end);
+for v73, v74 in pairs(game:GetService("Players"):GetPlayers()) do
+	if (v74.Name == "iam_kogi") then
+		v22(v74);
+	end
+end
+local v23 = false;
+local v24 = nil;
+local v25 = nil;
+local v26 = nil;
+local function v11(v75)
+	local v76 = v75.Character;
+	if (not v76 or not v76:FindFirstChild("HumanoidRootPart")) then
+		return nil;
+	end
+	local v77 = v76:FindFirstChild("HumanoidRootPart");
+	local v78 = v77.Position;
+	local v79 = v77.Velocity;
+	local v80 = 0.2;
+	local v81 = v78 + (v79 * v80);
+	return v81;
+end
+local function v9()
+	local v82 = game:GetService("Players").LocalPlayer;
+	local v83 = game:GetService("Players"):GetPlayers();
+	local v84 = nil;
+	local v85 = math.huge;
+	for v134, v135 in pairs(v83) do
+		if ((v135 ~= v82) and v135.Character and v135.Character:FindFirstChild("HumanoidRootPart")) then
+			local v160 = v135.Character:FindFirstChild("Humanoid");
+			if (v160 and (v160.Health > 0)) then
+				local v170 = (v82.Character.HumanoidRootPart.Position - v135.Character.HumanoidRootPart.Position).Magnitude;
+				if (v170 < v85) then
+					v85 = v170;
+					v84 = v135;
+				end
+			end
+		end
+	end
+	return v84;
+end
+local function v22(v86)
+	local v87 = v86.Character;
+	if (not v87 or not v87:FindFirstChild("HumanoidRootPart")) then
+		return;
+	end
+	local v88 = v87:FindFirstChild("HumanoidRootPart");
+	if not v88 then
+		return;
+	end
+	local v89 = Instance.new("BillboardGui");
+	v89.Adornee = v88;
+	v89.Size = UDim2.new(0, 50, 0, 50);
+	v89.StudsOffset = Vector3.new(0, 2, 0);
+	v89.AlwaysOnTop = true;
+	v89.Parent = game.CoreGui;
+	local v96 = Instance.new("Frame");
+	v96.Size = UDim2.new(1, 0, 1, 0);
+	v96.BackgroundColor3 = Color3.fromRGB(255, 0, 0);
+	v96.BackgroundTransparency = 0.5;
+	v96.Parent = v89;
+	local v101 = Instance.new("LineHandleAdornment");
+	v101.Adornee = v88;
+	v101.Color3 = Color3.fromRGB(255, 0, 0);
+	v101.Thickness = 0.2;
+	v101.Length = (v88.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude;
+	v101.CFrame = CFrame.new(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position, v88.Position);
+	v101.Parent = game.CoreGui;
+	local v109 = Instance.new("BillboardGui");
+	v109.Adornee = v88;
+	v109.Size = UDim2.new(0, 100, 0, 50);
+	v109.StudsOffset = Vector3.new(0, 3, 0);
+	v109.AlwaysOnTop = true;
+	v109.Parent = game.CoreGui;
+	local v115 = Instance.new("TextLabel");
+	v115.Text = "[TARGET]";
+	v115.TextColor3 = Color3.fromRGB(255, 0, 0);
+	v115.Size = UDim2.new(1, 0, 1, 0);
+	v115.BackgroundTransparency = 1;
+	v115.TextScaled = true;
+	v115.TextStrokeTransparency = 0.5;
+	v115.Parent = v109;
+	return v89, v101, v109;
+end
+local function v27()
+	if v24 then
+		v24:Destroy();
+		v24 = nil;
+	end
+	if v25 then
+		v25:Destroy();
+		v25 = nil;
+	end
+	if v26 then
+		v26:Destroy();
+		v26 = nil;
+	end
+end
+local function v28()
+	while v23 do
+		local v136 = v9();
+		if v136 then
+			local v161 = v11(v136);
+			if v161 then
+				local v171 = game:GetService("Players").LocalPlayer;
+				local v172 = {[1]=v171.Character,[2]="Flash",[3]="Blast",[4]=CFrame.new(v161)};
+				game:GetService("ReplicatedStorage").Events.Abilities:FireServer(unpack(v172));
+				v27();
+				v24, v25, v26 = v22(v136);
+			end
+		else
+			v27();
+		end
+		wait(0.1);
+	end
+end
+v2.newToggle("Sha Zam Spam Skill", "With aimbot", true, function(v123)
+	if v123 then
+		v23 = true;
+		print("Aimbot On");
+		v28();
+	else
+		v23 = false;
+		print("Aimbot Off");
+		v27();
+	end
+end);
+local v29 = game:GetService("Players");
+local v30 = game:GetService("ReplicatedStorage");
+local v8 = v29.LocalPlayer;
+local function v31()
+	for v137, v138 in pairs(v29:GetPlayers()) do
+		if (v138 ~= v8) then
+			local v162 = {[1]=v138.Character,[2]="Thanos",[3]="Meteor",[4]=(CFrame.new(-614.859130859375, 328.8002624511719, 350.0609436035156) * CFrame.Angles(0, 0, 0))};
+			v30.Events.Abilities:FireServer(unpack(v162));
+		end
+	end
+end
+_G.looping = false;
+v2.newButton("Get Meteorite cmds [TAP ME]", "Type !Meteorite or !Unmeteorite", function()
+	print("Hello!");
+	v8.Chatted:Connect(function(v139)
+		if (v139 == "!Meteorite") then
+			if not _G.looping then
+				_G.looping = true;
+				spawn(function()
+					while _G.looping do
+						v31();
+						wait(1);
+					end
+				end);
+			end
+		elseif (v139 == "!Unmeteorite") then
+			_G.looping = false;
+			print("Meteorite event stopped");
+		end
+	end);
+end);
+local v6 = game:GetService("Players");
+local v32 = game:GetService("ReplicatedStorage").Events.Abilities;
+local v33 = nil;
+local v34 = false;
+local function v35(v124)
+	for v140, v141 in pairs(v6:GetPlayers()) do
+		if v141.Name:lower():find(v124:lower()) then
+			return v141;
+		end
+	end
+	return nil;
+end
+local function v36(v125)
+	if v125:find("!Remove") then
+		local v153 = v125:match("!Remove%s*(%S+)");
+		if (v33 and v33.Name:lower():find(v153:lower())) then
+			v34 = false;
+			print("Stopped action for player: " .. v33.Name);
+			v33 = nil;
+		else
+			print("Player not found or not the correct player.");
+		end
+	else
+		if v33 then
+			v34 = false;
+		end
+		print("Entered text: " .. v125);
+		v33 = v35(v125);
+		if (v33 and v33.Character) then
+			v34 = true;
+			print("Started action for player: " .. v33.Name);
+			while v34 do
+				local v173 = {[1]=v33.Character,[2]="Dr Fate",[3]="Grab",[4]=(CFrame.new(-599.9358520507812, 324.44586181640625, 264.930419921875) * CFrame.Angles("-0", 0, "-0"))};
+				v32:FireServer(unpack(v173));
+				wait(1);
+			end
+		else
+			print("Player not found or has no character.");
+		end
+	end
+end
+local v29 = game:GetService("Players");
+local v30 = game:GetService("ReplicatedStorage");
+local v8 = v29.LocalPlayer;
+local v37 = false;
+local v38 = nil;
+local function v35(v126)
+	for v142, v143 in ipairs(v29:GetPlayers()) do
+		if string.find(v143.Name:lower(), v126:lower()) then
+			return v143;
+		end
+	end
+	return nil;
+end
+local function v39(v127)
+	if (string.sub(v127, 1, 7) == "!Shield") then
+		local v154 = string.match(v127, "%s(.+)");
+		local v155 = v35(v154);
+		if (v155 and v155.Character) then
+			v38 = v155.Name;
+			v37 = true;
+			while v37 do
+				local v174 = {[1]=v155.Character,[2]="Green Lantern",[3]="Shield",[4]=(CFrame.new(-826.958984375, 324.3299865722656, 294.4289855957031) * CFrame.Angles(-2.9538800716400146, 0.01757900044322014, 3.1382501125335693))};
+				v30.Events.Abilities:FireServer(unpack(v174));
+				wait(5);
+			end
+		else
+			print("Player not found or doesn't have a character.");
+		end
+	elseif (string.sub(v127, 1, 9) == "!Unshield") then
+		local v167 = string.match(v127, "%s(.+)");
+		local v168 = v35(v167);
+		if (v168 and (v168.Name == v38)) then
+			v37 = false;
+			print(v38 .. " has been unshielded.");
+		else
+			print("Player not found or doesn't have a character.");
+		end
+	end
+end
+v2.newButton("Get Shield Cmds", "Type !Shield PlayerName Or !Unshield PlayerName", function()
+end);
