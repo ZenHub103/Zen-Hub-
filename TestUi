@@ -1,91 +1,74 @@
--- UI_Library Module
-local UI_Library = {}
+local ZenHubUI = {}
 
--- Function to create the main UI window
-function UI_Library.CreateWindow(windowName)
-    local playerGui = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+function ZenHubUI.CreateWindow(title)
+    -- Create a main window
+    local window = Instance.new("ScreenGui")
+    window.Name = title
+    window.Parent = game:GetService("CoreGui")
 
-    -- Remove existing UI with the same name if any
-    if playerGui:FindFirstChild(windowName) then
-        playerGui[windowName]:Destroy()
-    end
+    local frame = Instance.new("Frame")
+    frame.Size = UDim2.new(0, 300, 0, 400)
+    frame.Position = UDim2.new(0.5, -150, 0.5, -200)
+    frame.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+    frame.BorderSizePixel = 0
+    frame.Parent = window
 
-    -- Screen GUI
-    local screenGui = Instance.new("ScreenGui")
-    screenGui.Name = windowName
-    screenGui.Parent = playerGui
+    local titleLabel = Instance.new("TextLabel")
+    titleLabel.Size = UDim2.new(1, 0, 0, 40)
+    titleLabel.BackgroundTransparency = 1
+    titleLabel.Text = title
+    titleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+    titleLabel.Font = Enum.Font.SourceSansBold
+    titleLabel.TextSize = 18
+    titleLabel.Parent = frame
 
-    -- Main Frame
-    local mainFrame = Instance.new("Frame")
-    mainFrame.Size = UDim2.new(0, 400, 0, 300)
-    mainFrame.Position = UDim2.new(0.5, -200, 0.5, -150)
-    mainFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
-    mainFrame.BorderSizePixel = 2
-    mainFrame.BorderColor3 = Color3.fromRGB(255, 85, 0)
-    mainFrame.Parent = screenGui
-
-    -- Title
-    local title = Instance.new("TextLabel")
-    title.Size = UDim2.new(1, 0, 0, 40)
-    title.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-    title.BorderSizePixel = 0
-    title.Text = windowName
-    title.TextColor3 = Color3.fromRGB(255, 255, 255)
-    title.Font = Enum.Font.SourceSansBold
-    title.TextSize = 20
-    title.Parent = mainFrame
-
-    return mainFrame
+    return { Gui = window, Frame = frame }
 end
 
--- Function to create sections
-function UI_Library.CreateSection(parentFrame, sectionName)
+function ZenHubUI.CreateSection(window, sectionName)
     local sectionFrame = Instance.new("Frame")
-    sectionFrame.Size = UDim2.new(0.5, -10, 1, -50)
-    sectionFrame.Position = UDim2.new(0, 5, 0, 45)
-    sectionFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
-    sectionFrame.BorderSizePixel = 2
-    sectionFrame.BorderColor3 = Color3.fromRGB(255, 85, 0)
-    sectionFrame.Parent = parentFrame
+    sectionFrame.Size = UDim2.new(1, 0, 0, 200)
+    sectionFrame.Position = UDim2.new(0, 0, 0, 40)
+    sectionFrame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+    sectionFrame.BorderSizePixel = 0
+    sectionFrame.Parent = window.Frame
 
-    local sectionTitle = Instance.new("TextLabel")
-    sectionTitle.Size = UDim2.new(1, 0, 0, 30)
-    sectionTitle.BackgroundTransparency = 1
-    sectionTitle.Text = sectionName
-    sectionTitle.TextColor3 = Color3.fromRGB(255, 170, 0)
-    sectionTitle.Font = Enum.Font.SourceSansBold
-    sectionTitle.TextSize = 18
-    sectionTitle.Parent = sectionFrame
+    local sectionLabel = Instance.new("TextLabel")
+    sectionLabel.Size = UDim2.new(1, 0, 0, 30)
+    sectionLabel.BackgroundTransparency = 1
+    sectionLabel.Text = sectionName
+    sectionLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+    sectionLabel.Font = Enum.Font.SourceSans
+    sectionLabel.TextSize = 16
+    sectionLabel.Parent = sectionFrame
 
     return sectionFrame
 end
 
--- Function to create buttons
-function UI_Library.CreateButton(parent, buttonText, callback)
+function ZenHubUI.CreateButton(section, buttonText, callback)
     local button = Instance.new("TextButton")
-    button.Size = UDim2.new(1, -10, 0, 30)
-    button.Position = UDim2.new(0, 5, 0, 40 + (#parent:GetChildren() * 35)) -- Dynamic positioning
-    button.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+    button.Size = UDim2.new(0.9, 0, 0, 30)
+    button.Position = UDim2.new(0.05, 0, 0, 40)
+    button.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
     button.TextColor3 = Color3.fromRGB(255, 255, 255)
-    button.Font = Enum.Font.SourceSans
-    button.TextSize = 16
     button.Text = buttonText
-    button.Parent = parent
+    button.Font = Enum.Font.SourceSans
+    button.TextSize = 14
+    button.Parent = section
 
     button.MouseButton1Click:Connect(callback)
 end
 
--- Function to create labels
-function UI_Library.CreateLabel(parent, labelText)
+function ZenHubUI.CreateLabel(section, labelText)
     local label = Instance.new("TextLabel")
-    label.Size = UDim2.new(1, 0, 0, 30)
-    label.Position = UDim2.new(0, 5, 0, 40 + (#parent:GetChildren() * 35))
+    label.Size = UDim2.new(0.9, 0, 0, 30)
+    label.Position = UDim2.new(0.05, 0, 0, 80)
     label.BackgroundTransparency = 1
-    label.Text = labelText
     label.TextColor3 = Color3.fromRGB(255, 255, 255)
+    label.Text = labelText
     label.Font = Enum.Font.SourceSans
     label.TextSize = 14
-    label.Parent = parent
+    label.Parent = section
 end
 
-return UI_Library
+return ZenHubUI
